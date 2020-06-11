@@ -5,17 +5,5 @@ services:
 
 before_install:
  - chmod +x mvnw 
- - docker build -t rathna78/docker-springboot-demo2 -f Dockerfile .
 
-deploy:
-  provider: elasticbeanstalk
-  region: "ap-south-1"
-  app: "docker-springboot-demo2"
-  env: "DockerSpringbootDemo2-env"
-  bucket_name: "elasticbeanstalk-ap-south-1-863024253731"
-  bucket_path: "docker-springboot-demo2"
-  on:
-    branch: master
-  access_key_id: $AWS_ACCESS_KEY
-  secret_access_key: $AWS_SECRET_KEY
-
+script: AWS_ACCESS_KEY_ID="$AWS_ACCESS_KEY_ID" AWS_SECRET_KEY="$AWS_SECRET_KEY" mvn clean install beanstalk:upload-source-bundle beanstalk:create-application-version beanstalk:update-environment
