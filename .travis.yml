@@ -1,4 +1,4 @@
-language: generic
+language: java
 sudo: required
 services:
   - docker
@@ -7,7 +7,7 @@ before_install:
   - docker build -t rathna78/docker-springboot-demo2 -f Dockerfile .
 
 script:
-  - docker run -e CI=true rathna78/docker-springboot-demo2
+  - mvn package -DskipTests
 
 deploy:
   provider: elasticbeanstalk
