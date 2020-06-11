@@ -4,7 +4,8 @@ services:
   - docker
 
 before_install:
-  - docker build -t rathna78/docker-springboot-demo2 -f Dockerfile .
+ - chmod +x mvnw 
+ - docker build -t rathna78/docker-springboot-demo2 -f Dockerfile .
 
 deploy:
   provider: elasticbeanstalk
