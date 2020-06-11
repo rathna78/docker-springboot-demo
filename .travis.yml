@@ -6,9 +6,6 @@ services:
 before_install:
   - docker build -t rathna78/docker-springboot-demo2 -f Dockerfile .
 
-script:
-  - mvn package -DskipTests
-
 deploy:
   provider: elasticbeanstalk
   region: "ap-south-1"
